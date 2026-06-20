@@ -1,63 +1,88 @@
 ![ICPress Logo](/icon_192.png)
 
-# ICPress — Individual Contributor Press
+# ICPress
 
-**Empowering free speech and access to crucial information — for everyone, everywhere, powered by a global community of journalists.**
+ICPress is an open-source, peer-reviewed publishing platform for independent journalism and evidence-based analysis.
+
+It enables journalists and contributors to publish, review, and verify articles through a transparent collaborative workflow. Designed for self-hosting, ICPress allows anyone to run their own independent newsroom infrastructure.
+
+🌐 [icpress.org](https://icpress.org) · 📖 [About](https://icpress.org/about) · Operated by [StoryPop AB](https://icpress.org/about) (Sweden)
 
 ---
 
-ICPress is a fully open-source, peer-reviewed news platform where anyone can report, investigate, and publish professional articles on technology, finance, markets, and geopolitics. Built with a mobile-first philosophy, it combines AI writing assistance, interactive article maps, source verification, and a community peer-review pipeline — putting the tools of professional journalism in the hands of contributors worldwide.
+## Capabilities
 
-The platform is operated by **StoryPop AB**, a company registered in Sweden, and founded by **Senad Matuh Delic** on the conviction that access to information is a human right. Contributors are eligible to receive equity in the platform through the **Stakeholder Token (SSTK)** programme — so every journalist has a real stake in what they help build.
+- Peer-reviewed publishing workflow — structured editorial pipeline for independent journalism
+- Open-source self-hostable newsroom infrastructure
+- AI-assisted drafting and editing tools
+- Source verification and citation tracking
+- Interactive geographic reporting (Leaflet + GeoJSON)
+- Mobile-first publishing via native Android app
 
-ICPress is currently in **open beta**. Anyone can submit an article for peer review today — no press credential or invitation needed.
+---
 
-🌐 [icpress.org](https://icpress.org) · 📖 [About ICPress](https://icpress.org/about)
+## Architecture
+
+ICPress consists of independent services:
+
+**Core Backend**
+
+| Repository | Language | Role |
+|---|---|---|
+| [apiplatform](https://github.com/ICPress/apiplatform) | C# | REST API |
+| [eventplatform](https://github.com/ICPress/eventplatform) | C# | Notifications & event handling |
+
+**Frontend**
+
+| Repository | Language | Role |
+|---|---|---|
+| [siteplatform](https://github.com/ICPress/siteplatform) | HTML | Web interface & static rendering |
+
+**Services**
+
+| Repository | Language | Role |
+|---|---|---|
+| [mailplatform](https://github.com/ICPress/mailplatform) | HTML | Email delivery |
+| [spacy](https://github.com/ICPress/spacy) | Python | NLP processing |
+
+**Client**
+
+| Repository | Language | Role |
+|---|---|---|
+| [android](https://github.com/ICPress/android) | Kotlin | Android app |
+
+**Deployment**
+
+| Repository | Role |
+|---|---|
+| [docker](https://github.com/ICPress/docker) | Docker Compose orchestration for the full platform |
 
 ---
 
 ## Self-Hosting
 
-ICPress is fully open and designed to be self-hosted. Whether you're running an independent newsroom, a community publication, or a country-specific language edition — you can spin up your own instance.
+ICPress is fully self-hostable using Docker. Typical setup time: ~10–20 minutes.
 
-👉 **[ICPress Docker Repository](https://github.com/ICPress/docker)** — Docker Compose orchestration for the full platform, including deployment configuration, service wiring, and environment setup.
+1. Clone the [docker](https://github.com/ICPress/docker) repository
+2. Configure environment variables (`appsettings.json`)
+3. Run `docker compose up`
+4. Deploy on any Linux server or cloud provider
 
----
-
-## Repositories
-
-### 📱 Client
-
-| Repository | Description | Language |
-|---|---|---|
-| [android](https://github.com/ICPress/android) | Android app for ICPress | Kotlin |
-
-### ⚙️ Backend Services
-
-The ICPress backend is composed of the following services:
-
-| Repository | Service | Description | Language |
-|---|---|---|---|
-| [apiplatform](https://github.com/ICPress/apiplatform) | `icpress-apiplatform` | Main REST API | C# |
-| [siteplatform](https://github.com/ICPress/siteplatform) | `icpress-siteplatform` | Site & static serving | HTML |
-| [mailplatform](https://github.com/ICPress/mailplatform) | `icpress-mailplatform` | Email dispatch service | HTML |
-| [eventplatform](https://github.com/ICPress/eventplatform) | `icpress-eventplatform` | Event & push notification service | C# |
-| [spacy](https://github.com/ICPress/spacy) | `icpress-spacy` | NLP / language processing | Python |
-
-### 🐳 Deployment
-
-| Repository | Description |
-|---|---|
-| [docker](https://github.com/ICPress/docker) | Docker Compose orchestration for the full ICPress platform |
-
----
-
-## Modifying the Android App
-
-Want to build a custom version of the Android client targeting your own self-hosted endpoint? Clone the [android](https://github.com/ICPress/android) repository and follow the instructions in its README.
+See the [docker repository](https://github.com/ICPress/docker) for full setup documentation.
 
 ---
 
 ## Contributing
 
-Contributions are welcome via pull requests across all repositories. Whether you're fixing a bug, adding a feature, or translating the UI — every contribution matters. All repositories are licensed under the **[GNU Affero General Public License v3.0](/LICENSE)**.
+Contributors help shape the future of open, independent journalism infrastructure.
+
+You can contribute by:
+
+- Fixing bugs
+- Improving documentation
+- Adding features
+- Translating the platform
+- Improving the peer review workflow
+
+Start with issues tagged `good first issue` where available. All contributions are licensed under [AGPLv3](/LICENSE).
+
